@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html onclick="trocarFoto()">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pisk</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <img class="imagem" id="fechado" src="olho_fechado.jpg" style="display: none;">
+    <img class="imagem" id="aberto" src="olho_aberto.png" style="display: block;">
+<script>
+    document.body.addEventListener("keypress", (event) => {
+        trocarFoto()
+    })
+
+    function trocarFoto() {
+        if(document.getElementById("aberto").style.display == 'block'){
+            fechar()
+        }else{
+            abrir()
+        }
+    }
+
+    function fechar(){
+        document.getElementById("aberto").style.display = 'none';
+        document.getElementById("fechado").style.display = 'block';
+
+        delay(200).then(() => abrir());
+    }
+
+    function abrir(){
+        document.getElementById("fechado").style.display = 'none';
+        document.getElementById("aberto").style.display = 'block';
+    }
+
+    function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+    }
+</script>
+
+<style>
+    .imagem{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body{
+        background-color: rgb(78, 78, 78);
+    }
+</style>
+    
+</body>
+</html>
